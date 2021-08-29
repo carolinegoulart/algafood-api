@@ -1,20 +1,20 @@
 # algafood-api
 
-Projeto do curso [**Especialista Spring REST**](https://www.algaworks.com/curso/especialista-spring-rest/) da Algaworks. Inspirado em soluções como o _iFood_ e _Uber Eats_, o 
-objetivo do projeto é desenvolver uma API para uma empresa de delivery de comida.
+RESTful API developed during the [**Spring REST Specialist**](https://www.algaworks.com/curso/especialista-spring-rest/) bootcamp, created by [**Algaworks**](https://www.algaworks.com/). 
+The project was inspired in some Food Delivery apps, such as _iFood_ and _Uber Eats_.
 
-## Requisitos
+## :computer: Prerequisites
 * JDK 11
 * Maven
 
-## Principais Recursos
+## :rocket: Technologies
 * [MySQL](https://www.mysql.com/)
 * [Lombok](https://projectlombok.org/)
 * [MapStruct](https://mapstruct.org/)
 * [Swagger](https://swagger.io/)
 * [Amazon S3](https://aws.amazon.com/s3/)
 
-## Instalação
+## :computer: How to run
 ```
 cd algafood-api
 ./mvnw compile
