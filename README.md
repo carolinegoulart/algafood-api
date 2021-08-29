@@ -1,7 +1,7 @@
 # algafood-api
 
 RESTful API developed during the [**Spring REST Specialist**](https://www.algaworks.com/curso/especialista-spring-rest/) bootcamp, created by [**Algaworks**](https://www.algaworks.com/). 
-The project was inspired in some Food Delivery apps, such as _iFood_ and _Uber Eats_.
+The project was inspired by some Food Delivery apps, such as _iFood_ and _Uber Eats_.
 
 ## :computer: Prerequisites
 * JDK 11
