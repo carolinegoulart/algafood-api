@@ -47,6 +47,10 @@ public class User {
         this.setEmail(userRequest.getEmail());
     }
 
+    public void updateUserPassword(String password) {
+        this.setPassword(password);
+    }
+
     public UserResponseDTO toUserResponseDTO() {
         return UserResponseDTO.builder()
                 .id(this.getId())

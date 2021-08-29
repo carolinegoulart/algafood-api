@@ -1,6 +1,7 @@
 package com.algaworks.algafoodapi.api.controller;
 
 import com.algaworks.algafoodapi.api.dto.request.CreateUserRequestDTO;
+import com.algaworks.algafoodapi.api.dto.request.UpdateUserPasswordRequestDTO;
 import com.algaworks.algafoodapi.api.dto.request.UpdateUserRequestDTO;
 import com.algaworks.algafoodapi.api.dto.response.UserResponseDTO;
 import com.algaworks.algafoodapi.domain.model.User;
@@ -42,6 +43,13 @@ public class UserController {
     public UserResponseDTO update(@PathVariable Long userId,
                                   @Valid @RequestBody UpdateUserRequestDTO userRequest) {
         return userService.update(userId, userRequest).toUserResponseDTO();
+    }
+
+    @PutMapping("/{userId}/password")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePassword(@PathVariable Long userId,
+                               @Valid @RequestBody UpdateUserPasswordRequestDTO userRequest) {
+        userService.updatePassword(userId, userRequest).toUserResponseDTO();
     }
 
     @DeleteMapping("/{userId}")

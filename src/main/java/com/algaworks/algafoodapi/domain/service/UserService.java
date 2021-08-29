@@ -1,7 +1,9 @@
 package com.algaworks.algafoodapi.domain.service;
 
 import com.algaworks.algafoodapi.api.dto.request.CreateUserRequestDTO;
+import com.algaworks.algafoodapi.api.dto.request.UpdateUserPasswordRequestDTO;
 import com.algaworks.algafoodapi.api.dto.request.UpdateUserRequestDTO;
+import com.algaworks.algafoodapi.domain.exception.PasswordsDoNotMatchException;
 import com.algaworks.algafoodapi.domain.exception.UserNotFoundException;
 import com.algaworks.algafoodapi.domain.model.User;
 import com.algaworks.algafoodapi.domain.repository.UserRepository;
@@ -34,6 +36,17 @@ public class UserService {
     public User update(Long userId, UpdateUserRequestDTO userRequest) {
         User userFromDB = findById(userId);
         userFromDB.updateUserData(userRequest);
+        return userRepository.save(userFromDB);
+    }
+
+    public User updatePassword(Long userId, UpdateUserPasswordRequestDTO userRequest) {
+        User userFromDB = findById(userId);
+
+        if (!userFromDB.getPassword().equals(userRequest.getCurrentPassword())) {
+            throw new PasswordsDoNotMatchException();
+        }
+
+        userFromDB.updateUserPassword(userRequest.getNewPassword());
         return userRepository.save(userFromDB);
     }
 
