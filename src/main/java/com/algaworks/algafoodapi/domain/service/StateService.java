@@ -4,6 +4,7 @@ import com.algaworks.algafoodapi.domain.exception.EntityInUseException;
 import com.algaworks.algafoodapi.domain.exception.StateNotFoundException;
 import com.algaworks.algafoodapi.domain.model.State;
 import com.algaworks.algafoodapi.domain.repository.StateRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,12 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StateService {
 
     private static final String STATE_IN_USE_MESSAGE = "State with ID %d cannot be deleted because it is being used";
 
-    @Autowired
-    private StateRepository stateRepository;
+    private final StateRepository stateRepository;
 
     @Transactional
     public State create(State state) {

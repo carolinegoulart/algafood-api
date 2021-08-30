@@ -4,6 +4,7 @@ import com.algaworks.algafoodapi.domain.exception.CuisineNotFoundException;
 import com.algaworks.algafoodapi.domain.exception.EntityInUseException;
 import com.algaworks.algafoodapi.domain.model.Cuisine;
 import com.algaworks.algafoodapi.domain.repository.CuisineRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,14 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CuisineService {
 
     private static final String CUISINE_NOT_FOUND_MESSAGE = "Cuisine with ID %d not found";
-    private static final String CUISINE_IN_USE_MESSAGE =
-            "Cuisine with ID %d cannot be deleted because it's being used";
+    private static final String CUISINE_IN_USE_MESSAGE = "Cuisine with ID %d cannot be deleted because it's being used";
 
-    @Autowired
-    private CuisineRepository cuisineRepository;
+    private final CuisineRepository cuisineRepository;
 
     @Transactional
     public Cuisine create(Cuisine cuisine) {

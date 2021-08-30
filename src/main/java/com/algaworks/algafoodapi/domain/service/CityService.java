@@ -7,6 +7,7 @@ import com.algaworks.algafoodapi.domain.exception.StateNotFoundException;
 import com.algaworks.algafoodapi.domain.model.City;
 import com.algaworks.algafoodapi.domain.model.State;
 import com.algaworks.algafoodapi.domain.repository.CityRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,16 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CityService {
 
     private static final String STATE_NOT_FOUND_MESSAGE = "State with ID %d not found";
     private static final String CITY_IN_USE_MESSAGE = "City with ID %d cannot be deleted because it's being used";
 
-    @Autowired
-    private CityRepository cityRepository;
-
-    @Autowired
-    private StateService stateService;
+    private final CityRepository cityRepository;
+    private final StateService stateService;
 
     @Transactional
     public City create(City city) {

@@ -17,7 +17,9 @@ import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "restaurants")
@@ -66,7 +68,7 @@ public class Restaurant {
     @JoinTable(name = "restaurants_payment_options",
             joinColumns = @JoinColumn(name = "restaurant_id"),
             inverseJoinColumns = @JoinColumn(name = "payment_option_id"))
-    private List<PaymentOption> paymentOptions = new ArrayList<>();
+    private Set<PaymentOption> paymentOptions = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
@@ -87,6 +89,14 @@ public class Restaurant {
                 .cuisine(this.getCuisine().toCuisineResponseDTO())
                 .address(this.getAddress())
                 .build();
+    }
+
+    public void addPaymentOption(PaymentOption payment) {
+        this.getPaymentOptions().add(payment);
+    }
+
+    public void removePaymentOption(PaymentOption payment) {
+        this.getPaymentOptions().remove(payment);
     }
 
 }

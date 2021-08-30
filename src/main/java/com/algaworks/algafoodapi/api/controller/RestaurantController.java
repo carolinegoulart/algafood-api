@@ -44,14 +44,6 @@ public class RestaurantController {
         return updatedRestaurant.toRestaurantResponseDTO();
     }
 
-//    @PatchMapping("/{restaurantId}")
-//    public RestaurantResponseDTO updateFields(@PathVariable Long restaurantId,
-//                                              @RequestBody Map<String, String> fields,
-//                                              HttpServletRequest request) {
-//        Restaurant updatedRestaurant = restaurantService.updateFields(restaurantId, fields, request);
-//        return responseDTOAssembler.toResponseDTO(updatedRestaurant);
-//    }
-
     @DeleteMapping("/{restaurantId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long restaurantId) {

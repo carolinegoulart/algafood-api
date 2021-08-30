@@ -6,6 +6,7 @@ import com.algaworks.algafoodapi.domain.exception.GroupNotFoundException;
 import com.algaworks.algafoodapi.domain.model.Group;
 import com.algaworks.algafoodapi.domain.model.Permission;
 import com.algaworks.algafoodapi.domain.repository.GroupRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -14,15 +15,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class GroupService {
 
     private static final String GROUP_IN_USE_MESSAGE = "Group with ID %d cannot be deleted because it is being used";
 
-    @Autowired
-    private GroupRepository groupRepository;
-
-    @Autowired
-    private PermissionService permissionService;
+    private final GroupRepository groupRepository;
+    private final PermissionService permissionService;
 
     public Group create(GroupRequestDTO groupRequestDTO) {
         List<Permission> permissions = permissionService.validateAndGetPermissions(groupRequestDTO.getPermissionsId());

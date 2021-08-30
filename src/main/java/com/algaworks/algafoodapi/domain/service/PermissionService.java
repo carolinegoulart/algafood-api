@@ -3,16 +3,16 @@ package com.algaworks.algafoodapi.domain.service;
 import com.algaworks.algafoodapi.domain.exception.PermissionNotFoundException;
 import com.algaworks.algafoodapi.domain.model.Permission;
 import com.algaworks.algafoodapi.domain.repository.PermissionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PermissionService {
 
-    @Autowired
     private PermissionRepository permissionRepository;
 
     public Permission findById(Long id) {
